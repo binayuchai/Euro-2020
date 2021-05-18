@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{F0EB14BE-B1BF-4F27-A4FD-6B1AFCC92DDA}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="euro-bet/Views/Shared/_Layout.cshtml">
+    <Files>
+      <File FileName="euro-bet/Views/Shared/_Layout.cshtml" Line="48" Column="23" />
+      <File FileName="euro-bet/Views/Home/Index.cshtml" Line="2491" Column="18" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="euro-bet" expanded="True">
+            <Node name="euro-bet" expanded="True">
+              <Node name="Views" expanded="True">
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" selected="True" />
+                </Node>
+              </Node>
+              <Node name="wwwroot" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.euro-bet PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
