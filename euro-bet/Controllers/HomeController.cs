@@ -23,6 +23,11 @@ namespace euro_bet.Controllers
             return View();
         }
 
+        [Route("About")]
+        public IActionResult About()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
