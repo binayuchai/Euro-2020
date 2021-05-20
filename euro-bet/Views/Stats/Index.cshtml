@@ -1,0 +1,927 @@
+@{
+    ViewData["Title"] = "Stats Page";
+}
+<!-- breadcrumb begin -->
+        <div class="breadcrumb-bettix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="breadcrumb-content">
+                            <h2>Match Statics</h2>
+                            <ul>
+                                <li>
+                                    <a href="#">Home</a>
+                                </li>
+                                <li>
+                                    Match Statics
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- breadcrumb end -->
+
+        <!-- statics page begin -->
+        <div class="statics-page">
+            <div class="container">
+                <div class="betting-table">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="bett-menu">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="football-tab" data-toggle="tab" href="#football" role="tab" aria-controls="football" aria-selected="false">
+                                            <i class="flaticon-football"></i>
+                                            <span class="text">
+                                                football
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="tennis-tab" data-toggle="tab" href="#tennis" role="tab" aria-controls="tennis" aria-selected="false">
+                                            <i class="flaticon-tennis-ball"></i>
+                                            <span class="text">
+                                                tennis
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="basketball-tab" data-toggle="tab" href="#basketball" role="tab" aria-controls="basketball" aria-selected="false">
+                                            <i class="flaticon-basketball-ball-variant"></i>
+                                            <span class="text">
+                                                Basketball
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="hockey-tab" data-toggle="tab" href="#hockey" role="tab" aria-controls="hockey" aria-selected="false">
+                                            <i class="flaticon-ice-hockey"></i>
+                                            <span class="text">
+                                                Ice hockey
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="volleyball-tab" data-toggle="tab" href="#volleyball" role="tab" aria-controls="volleyball" aria-selected="false">
+                                            <i class="flaticon-volleyball"></i>
+                                            <span class="text">
+                                                VOLLEYBALL
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="badminton-tab" data-toggle="tab" href="#badminton" role="tab" aria-controls="badminton" aria-selected="false">
+                                            <i class="flaticon-badminton"></i>
+                                            <span class="text">
+                                                BADMINTON
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="baseball-tab" data-toggle="tab" href="#baseball" role="tab" aria-controls="baseball" aria-selected="false">
+                                            <i class="flaticon-baseball"></i>
+                                            <span class="text">
+                                                BASEBALL
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10">
+                            <div class="tab-content bet-tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="football" role="tabpanel" aria-labelledby="football-tab">
+                                    <h4 class="tab-title">Football<i class="flaticon-football"></i></h4>
+                                    <div class="statics-result-map">
+                                        <div class="round-set one">
+                                            <h3 class="title">Round : 1</h3>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Arsenal</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">Aston Villa</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">Norwich City</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">West Ham United</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Bournemouth</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Kenny Schepper</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Quentin Robert</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set two">
+                                            <h3 class="title">Round : 2</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">QUENTIN ROBERT</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set final">
+                                            <h3 class="title">Round : Final</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tennis" role="tabpanel" aria-labelledby="tennis-tab">
+                                    <h4 class="tab-title">tennis<i class="flaticon-tennis-ball"></i></h4>
+                                    <div class="statics-result-map">
+                                        <div class="round-set one">
+                                            <h3 class="title">Round : 1</h3>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Arsenal</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">Aston Villa</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">Norwich City</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">West Ham United</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Bournemouth</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Kenny Schepper</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Quentin Robert</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set two">
+                                            <h3 class="title">Round : 2</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">QUENTIN ROBERT</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set final">
+                                            <h3 class="title">Round : Final</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="basketball" role="tabpanel" aria-labelledby="basketball-tab">
+                                    <h4 class="tab-title">basketball<i class="flaticon-basketball-ball-variant"></i></h4>
+                                    <div class="statics-result-map">
+                                        <div class="round-set one">
+                                            <h3 class="title">Round : 1</h3>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Arsenal</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">Aston Villa</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">Norwich City</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">West Ham United</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Bournemouth</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Kenny Schepper</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Quentin Robert</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set two">
+                                            <h3 class="title">Round : 2</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">QUENTIN ROBERT</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set final">
+                                            <h3 class="title">Round : Final</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="hockey" role="tabpanel" aria-labelledby="hockey-tab">
+                                    <h4 class="tab-title">Ice hockey<i class="flaticon-ice-hockey"></i></h4>
+                                    <div class="statics-result-map">
+                                        <div class="round-set one">
+                                            <h3 class="title">Round : 1</h3>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Arsenal</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">Aston Villa</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">Norwich City</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">West Ham United</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Bournemouth</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Kenny Schepper</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Quentin Robert</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set two">
+                                            <h3 class="title">Round : 2</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">QUENTIN ROBERT</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set final">
+                                            <h3 class="title">Round : Final</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="volleyball" role="tabpanel" aria-labelledby="volleyball-tab">
+                                    <h4 class="tab-title">volleyball<i class="flaticon-volleyball"></i></h4>
+                                    <div class="statics-result-map">
+                                        <div class="round-set one">
+                                            <h3 class="title">Round : 1</h3>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Arsenal</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">Aston Villa</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">Norwich City</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">West Ham United</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Bournemouth</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Kenny Schepper</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Quentin Robert</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set two">
+                                            <h3 class="title">Round : 2</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">QUENTIN ROBERT</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set final">
+                                            <h3 class="title">Round : Final</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="badminton" role="tabpanel" aria-labelledby="badminton-tab">
+                                    <h4 class="tab-title">badminton<i class="flaticon-badminton"></i></h4>
+                                    <div class="statics-result-map">
+                                        <div class="round-set one">
+                                            <h3 class="title">Round : 1</h3>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Arsenal</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">Aston Villa</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">Norwich City</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">West Ham United</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Bournemouth</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Kenny Schepper</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Quentin Robert</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set two">
+                                            <h3 class="title">Round : 2</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">QUENTIN ROBERT</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set final">
+                                            <h3 class="title">Round : Final</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="baseball" role="tabpanel" aria-labelledby="baseball-tab">
+                                    <h4 class="tab-title">baseball<i class="flaticon-baseball"></i></h4>
+                                    <div class="statics-result-map">
+                                        <div class="round-set one">
+                                            <h3 class="title">Round : 1</h3>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Arsenal</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">Aston Villa</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">Norwich City</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">West Ham United</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Bournemouth</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Kenny Schepper</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">Quentin Robert</span>
+                                                                <span class="point">6</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set two">
+                                            <h3 class="title">Round : 2</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">Everton</span>
+                                                                <span class="point">1</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">3</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="player-name">QUENTIN ROBERT</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="round-set final">
+                                            <h3 class="title">Round : Final</h3>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="single-game">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="player-name">ASTON VILLA</span>
+                                                                <span class="point">2</span>
+                                                            </li>
+                                                            <li class="winner">
+                                                                <span class="player-name">BOURNEMOUTH</span>
+                                                                <span class="point">4</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- statics page end -->
