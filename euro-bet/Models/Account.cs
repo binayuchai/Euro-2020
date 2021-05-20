@@ -1,6 +1,6 @@
 using System;
 
-namespace euro_bet
+namespace euro_bet.Models
 {
     public class Account
     {

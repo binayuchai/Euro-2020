@@ -1,4 +1,5 @@
-namespace euro_bet{
+namespace euro_bet.Models
+{
     public class LoginViewModel
     {
         public string UserName { get; set; }
