@@ -4015,8 +4015,7 @@ ul {
     border-radius: 10px;
     padding: 30px;
     position: relative; }
-  .register .single-form {
-    display: none; }
+ 
     .register .single-form#first-step {
       display: block; }
     .register .single-form form div {
@@ -4087,7 +4086,6 @@ ul {
         background: #ddd; }
   .register .final-step {
     text-align: center;
-    display: none;
     padding: 120px 0;
     border: 1px solid rgba(56, 56, 56, 0.2);
     border-radius: 5px; }
