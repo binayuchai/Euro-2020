@@ -2,12 +2,12 @@ using System;
 
 namespace euro_bet.Models
 {
-     public interface IPerson
+     interface IPerson
     {
-        public int PersonID();
-        public string FirstName();
-        public string MiddleName();
-        public string LastName();
-        
+        public int PersonID { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+
     }
 }

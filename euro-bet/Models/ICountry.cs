@@ -4,11 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace euro_bet.Models
 {
-    public interface ICountry
+    interface ICountry
     {
-        public int CountryID();
-        public string CountryName();
-        public string Flag();
-
+        public int CountryID { get; set; }
+        public string CountryName { get; set; }
+        public string Flag { get; set; }
     }
 }
