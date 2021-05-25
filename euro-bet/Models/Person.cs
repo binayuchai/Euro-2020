@@ -2,7 +2,7 @@ using System;
 
 namespace euro_bet.Models
 {
-     interface IPerson
+     public class Person
     {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
