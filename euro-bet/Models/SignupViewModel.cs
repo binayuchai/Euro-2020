@@ -1,5 +1,8 @@
+using System;
+
 namespace euro_bet.Models
 {
+    [Serializable]
     public class SignupViewModel
     {
         public string FirstName { get; set; }

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using euro_bet.Models;
 using euro_bet.Data;
-
+using Newtonsoft.Json;
 
 namespace euro_bet.Controllers
 {
@@ -22,6 +22,8 @@ namespace euro_bet.Controllers
             _logger = logger;
             _dbContext = context;
         }
+
+        [Route("Login")]
 
         public IActionResult Login()
         {
@@ -55,14 +57,14 @@ namespace euro_bet.Controllers
             model.MiddleName = middleName;
             model.LastName = lastName;
 
-            TempData["model"] = model;
+            TempData["model"] = JsonConvert.SerializeObject(model);
             return View("Signup2", model);
         }
 
         [Route("Signup2")]
-        public IActionResult Signup2( SignupViewModel model)
+        public IActionResult Signup2(SignupViewModel model)
         {
-            TempData["model"] = model;
+            TempData["model"] = JsonConvert.SerializeObject(model);
             return View();
         }
 
@@ -70,18 +72,21 @@ namespace euro_bet.Controllers
         [HttpPost]
         public IActionResult Signup2(string email, string phone, string country, string state, string city)
         {
-            SignupViewModel model = (SignupViewModel)TempData["model"];
+            object o;
+            TempData.TryGetValue("model", out o);
+            SignupViewModel model= (o == null) ? new SignupViewModel() : JsonConvert.DeserializeObject<SignupViewModel>((string)o);
+            //SignupViewModel model = JsonConvert.DeserializeObject<SignupViewModel>(TempData["model"].ToString());
             model.Email = email;
             model.Phone = phone;
             model.Address = string.Format("{0}, {1}, {2}", city, state, country);
-            ViewData["model"] = model;
+            TempData["model"] = JsonConvert.SerializeObject(model);
             return View("Signup3", model);
         }
 
         [Route("Signup3")]
         public IActionResult Signup3(SignupViewModel model)
         {
-            ViewData["model"] = model;
+            TempData["model"] = JsonConvert.SerializeObject(model);
             return View();
         }
 
@@ -89,25 +94,11 @@ namespace euro_bet.Controllers
         [HttpPost]
         public IActionResult Signup3(string userName, string password)
         {
-            SignupViewModel model = (SignupViewModel)ViewData["model"];
+            object o;
+            TempData.TryGetValue("model", out o);
+            SignupViewModel model= (o == null) ? new SignupViewModel() : JsonConvert.DeserializeObject<SignupViewModel>((string)o);
             model.UserName = userName;
             model.Password = password;
-            ViewData["model"] = model;
-            return View("Signup4", model);
-        }
-
-        [Route("Signup4")]
-        public IActionResult Signup4(SignupViewModel model)
-        {
-            ViewData["model"] = model;
-            return View(model);
-        }
-
-        [Route("Signup4")]
-        [HttpPost]
-        public IActionResult Signup4()
-        {
-            SignupViewModel model = (SignupViewModel)ViewData["model"];
             //save
             Account newAccount = new Account();
             newAccount.UserName = model.UserName;
@@ -132,7 +123,13 @@ namespace euro_bet.Controllers
 
             _dbContext.SaveChanges();
 
-            return View("Login");
+            return View("Signup4");
+        }
+
+        [Route("Signup4")]
+        public IActionResult Signup4()
+        {
+            return View();
         }
 
         [Route("Profile")]

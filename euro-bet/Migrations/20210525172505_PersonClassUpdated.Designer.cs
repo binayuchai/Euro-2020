@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using euro_bet.Data;
 
 namespace euro_bet.Migrations
 {
     [DbContext(typeof(EuroBetContext))]
-    partial class EuroBetContextModelSnapshot : ModelSnapshot
+    [Migration("20210525172505_PersonClassUpdated")]
+    partial class PersonClassUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

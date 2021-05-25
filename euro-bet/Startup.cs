@@ -26,9 +26,10 @@ namespace euro_bet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddSessionStateTempDataProvider();
+            services.AddSession();
             services.AddDistributedMemoryCache();
-
+            
             services.AddDbContext<EuroBetContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -86,7 +87,7 @@ namespace euro_bet
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
