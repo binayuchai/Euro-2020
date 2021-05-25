@@ -14,5 +14,10 @@ namespace euro_bet.Data
         public DbSet<User> User { get; set; }
         public DbSet<Contact> Contact { get; set; }
         public DbSet<Balance> Balance { get; set; }
+
+        public DbSet<Player> Player { get; set; }
+        public DbSet<Coach> Coach { get; set; }
+        public DbSet<Squad> Squad { get; set; }
+        public DbSet<Country> Country { get; set; }
     }
 }
