@@ -150,6 +150,7 @@ namespace euro_bet.Controllers
                 model.Phone = phone;
                 model.Address = string.Format("{0}, {1}, {2}", city, state, country);
                 TempData["model"] = JsonConvert.SerializeObject(model);
+                ViewBag.Phone = model.Phone;
                 return View("Signup3", model);
             }
         }
@@ -158,7 +159,6 @@ namespace euro_bet.Controllers
         public IActionResult Signup3(SignupViewModel model)
         {
             TempData["model"] = JsonConvert.SerializeObject(model);
-            ViewBag.Phone = model.Phone;
             return View();
         }
 

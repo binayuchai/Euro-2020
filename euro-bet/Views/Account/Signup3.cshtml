@@ -47,8 +47,8 @@
                             <div class="single-form">
                                 <form asp-action="Signup3" asp-controller="Account">
                                     <div>
-                                        <input name="username" type="text" id="userName" value="@ViewBag.Phone">
-                                        <label for="userName" class="active">user Name</label>
+                                        <input name="username" type="text" id="userName" value="@ViewBag.Phone.ToString()" disabled>
+                                        <label for="username" class="active">user Name</label>
                                     </div>
                                     <div>
                                         <input name="password" type="password" id="passwordNo" required>
