@@ -101,6 +101,10 @@
             });
 
             $('#passwordNo, #passwordAgain').on('keyup', function () {
+                if( $('#passwordNo').val().length <6 )
+                {
+                     $('#message').html('password is too short.').css('color', 'red');
+                }
                 if ($('#passwordNo').val() == $('#passwordAgain').val()) {
                     $('#message').html('').css('color', 'green');
                 } else 
