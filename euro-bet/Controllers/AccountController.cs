@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 using euro_bet.Models;
 using euro_bet.Data;
-using Newtonsoft.Json;
+using euro_bet.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace euro_bet.Controllers
 {
@@ -16,11 +20,13 @@ namespace euro_bet.Controllers
     {
         private readonly ILogger<AccountController> _logger;
         private readonly EuroBetContext _dbContext;
+        private readonly AuthService _authService;
 
         public AccountController(ILogger<AccountController> logger, EuroBetContext context)
         {
             _logger = logger;
             _dbContext = context;
+            _authService = new AuthService();
         }
 
         [Route("Login")]
@@ -28,6 +34,61 @@ namespace euro_bet.Controllers
         public IActionResult Login()
         {
             return View();
+        }
+
+        [Route("Login")]
+        [HttpPost]
+        public async Task<IActionResult> LoginAsync(string username, string password, string returnUrl = null)
+        {
+            
+            var userAccount = _dbContext.Account.FirstOrDefault(x=> x.UserName.ToLower() == username.ToLower());
+            if(userAccount!=null)
+            {
+                var hashedPassword = userAccount.Password;
+                var isValid = _authService.VerifyPassword(hashedPassword, password);
+                if(isValid)
+                {
+                    var user = _dbContext.User.FirstOrDefault(x=> x.Account.AccountID == userAccount.AccountID);
+                    var claims = new List<Claim>
+                    {
+                        new Claim("username", username),
+                        new Claim("displayname", string.Format("{0} {1}", user.FirstName, user.LastName )),
+                        new Claim("role", "User")
+                    };
+
+                    await HttpContext.SignInAsync(new ClaimsPrincipal(new ClaimsIdentity(claims, "Cookies", "user", "role")));
+
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return Redirect("/");
+                    }
+                }
+                else
+                {
+                    ViewBag.Error="Invalid password.";
+                }
+            }
+            // else if(!userAccount.IsActive)
+            // {
+            //     ViewBag.Error="Username is not active.";
+            // }
+            else
+            {
+                ViewBag.Error="Username does not exist.";
+            }
+            return View();
+        }
+
+        [Route("Logout")]
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
         }
 
         public IActionResult Index()
@@ -72,58 +133,79 @@ namespace euro_bet.Controllers
         [HttpPost]
         public IActionResult Signup2(string email, string phone, string country, string state, string city)
         {
-            object o;
-            TempData.TryGetValue("model", out o);
-            SignupViewModel model= (o == null) ? new SignupViewModel() : JsonConvert.DeserializeObject<SignupViewModel>((string)o);
-            //SignupViewModel model = JsonConvert.DeserializeObject<SignupViewModel>(TempData["model"].ToString());
-            model.Email = email;
-            model.Phone = phone;
-            model.Address = string.Format("{0}, {1}, {2}", city, state, country);
-            TempData["model"] = JsonConvert.SerializeObject(model);
-            return View("Signup3", model);
+            // Verify phone
+            var chk = _dbContext.Contact.Any(x=> x.Phone.ToLower() == phone.ToLower());
+            if(chk)
+            {
+                ViewBag.Error = "Phone already exist, please contact admin to recover password.";
+                return View();
+            }
+            else
+            {
+                object o;
+                TempData.TryGetValue("model", out o);
+                SignupViewModel model= (o == null) ? new SignupViewModel() : JsonConvert.DeserializeObject<SignupViewModel>((string)o);
+                //SignupViewModel model = JsonConvert.DeserializeObject<SignupViewModel>(TempData["model"].ToString());
+                model.Email = email;
+                model.Phone = phone;
+                model.Address = string.Format("{0}, {1}, {2}", city, state, country);
+                TempData["model"] = JsonConvert.SerializeObject(model);
+                return View("Signup3", model);
+            }
         }
 
         [Route("Signup3")]
         public IActionResult Signup3(SignupViewModel model)
         {
             TempData["model"] = JsonConvert.SerializeObject(model);
+            ViewBag.Phone = model.Phone;
             return View();
         }
 
         [Route("Signup3")]
         [HttpPost]
-        public IActionResult Signup3(string userName, string password)
+        public IActionResult Signup3(string username, string password)
         {
-            object o;
-            TempData.TryGetValue("model", out o);
-            SignupViewModel model= (o == null) ? new SignupViewModel() : JsonConvert.DeserializeObject<SignupViewModel>((string)o);
-            model.UserName = userName;
-            model.Password = password;
-            //save
-            Account newAccount = new Account();
-            newAccount.UserName = model.UserName;
-            newAccount.Password = model.Password;
-            newAccount.DateCreated = DateTime.Now;
-            newAccount.IsActive = false;
-            //_dbContext.Account.Add(newAccount);
+            // Verify username
+            var chk = _dbContext.Account.Any(x=> x.UserName.ToLower() == username.ToLower());
+            if(chk)
+            {
+                ViewBag.Error = "Username already exist, please try another.";
+                return View();
+            }
+            else
+            {
+                object o;
+                TempData.TryGetValue("model", out o);
+                SignupViewModel model= (o == null) ? new SignupViewModel() : JsonConvert.DeserializeObject<SignupViewModel>((string)o);
+                
+                //save
+                Account newAccount = new Account();
+                newAccount.UserName = username;
 
-            Contact newContact = new Contact();
-            newContact.Email = model.Email;
-            newContact.Phone = model.Phone;
-            newContact.Address = model.Address;
-            //_dbContext.Contact.Add(newContact);
+                newAccount.Password = _authService.HashPassword(password);
+                newAccount.DateCreated = DateTime.Now;
+                newAccount.IsActive = false;
+                //_dbContext.Account.Add(newAccount);
 
-            User newUser = new User();
-            newUser.FirstName = model.FirstName;
-            newUser.MiddleName = model.MiddleName;
-            newUser.LastName = model.LastName;
-            newUser.Account = newAccount;
-            newUser.Contact = newContact;
-            _dbContext.User.Add(newUser);
+                Contact newContact = new Contact();
+                newContact.Email = model.Email;
+                newContact.Phone = model.Phone;
+                newContact.Address = model.Address;
+                //_dbContext.Contact.Add(newContact);
 
-            _dbContext.SaveChanges();
+                User newUser = new User();
+                newUser.FirstName = model.FirstName;
+                newUser.MiddleName = model.MiddleName;
+                newUser.LastName = model.LastName;
+                newUser.Account = newAccount;
+                newUser.Contact = newContact;
+                _dbContext.User.Add(newUser);
 
-            return View("Signup4");
+                _dbContext.SaveChanges();
+
+                return View("Signup4");
+            }
         }
 
         [Route("Signup4")]
@@ -133,6 +215,7 @@ namespace euro_bet.Controllers
         }
 
         [Route("Profile")]
+        [Authorize]
         public IActionResult Profile()
         {
             return View();

@@ -43,25 +43,30 @@
                             </ul>
                         </div>
                         <div class="all-form">
-                            
+                            <p class="text-danger">@ViewBag.Error</p>
                             <div class="single-form">
                                 <form asp-action="Signup3" asp-controller="Account">
                                     <div>
-                                        <input type="text" id="userName">
-                                        <label for="userName">user Name</label>
+                                        <input name="username" type="text" id="userName" value="@ViewBag.Phone">
+                                        <label for="userName" class="active">user Name</label>
                                     </div>
                                     <div>
-                                        <input type="password" id="passwordNo">
+                                        <input name="password" type="password" id="passwordNo" required>
                                         <label for="passwordNo">password</label>
                                     </div>
                                     <div>
                                         <input type="password" id="passwordAgain">
                                         <label for="passwordAgain">re-enter password</label>
+                                        
                                     </div>
                                     <div>
+                                        <span id='message'></span>
+                                    </div>
+                                    @* <div>
                                         <input type="text" id="securityQuote">
                                         <label for="securityQuote">security Quote</label>
-                                    </div><p>By clicking "NEXT", you confirm that you have read and understood the Bettix <a href="#">Privacy & Coockie Policy</a>, and agree to its terms.</p>
+                                    </div> *@
+                                    <p>By clicking "NEXT", you confirm that you have read and understood the Bettix <a href="#">Privacy & Coockie Policy</a>, and agree to its terms.</p>
                                     <button class="next">Next</button>
                                 </form>
                             </div>
@@ -93,6 +98,17 @@
                         }
                     });
                 });
+            });
+
+            $('#passwordNo, #passwordAgain').on('keyup', function () {
+                if( $('#passwordNo').val().length <6 )
+                {
+                     $('#message').html('password is too short.').css('color', 'red');
+                }
+                if ($('#passwordNo').val() == $('#passwordAgain').val()) {
+                    $('#message').html('').css('color', 'green');
+                } else 
+                    $('#message').html('password not matched').css('color', 'red');
             });
         </script>
     }
