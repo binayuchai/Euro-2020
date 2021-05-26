@@ -9,11 +9,11 @@ using euro_bet.Models;
 
 namespace euro_bet.Controllers
 {
-    public class ScheduleController : Controller
+    public class FixtureController : Controller
     {
-        private readonly ILogger<ScheduleController> _logger;
+        private readonly ILogger<FixtureController> _logger;
 
-        public ScheduleController(ILogger<ScheduleController> logger)
+        public FixtureController(ILogger<FixtureController> logger)
         {
             _logger = logger;
         }
