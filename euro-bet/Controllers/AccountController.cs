@@ -19,17 +19,45 @@ namespace euro_bet.Controllers
     {
         private readonly ILogger<AccountController> _logger;
         private readonly EuroBetContext _dbContext;
+        private readonly AuthService _authService;
 
         public AccountController(ILogger<AccountController> logger, EuroBetContext context)
         {
             _logger = logger;
             _dbContext = context;
+            _authService = new AuthService();
         }
 
         [Route("Login")]
 
         public IActionResult Login()
         {
+            return View();
+        }
+
+        [Route("Login")]
+        [HttpPost]
+        public IActionResult Login(string username, string password)
+        {
+            
+            var user = _dbContext.Account.FirstOrDefault(x=> x.UserName.ToLower() == username.ToLower());
+            if(user!=null)
+            {
+                var hashedPassword = user.Password;
+                var isValid = _authService.VerifyPassword(hashedPassword, password);
+                if(isValid)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.Error="Invalid password.";
+                }
+            }
+            else
+            {
+                ViewBag.Error="Username does not exist.";
+            }
             return View();
         }
 
@@ -106,8 +134,6 @@ namespace euro_bet.Controllers
             Account newAccount = new Account();
             newAccount.UserName = username;
 
-            AuthService _authService = new AuthService();
-            
             newAccount.Password = _authService.HashPassword(password);
             newAccount.DateCreated = DateTime.Now;
             newAccount.IsActive = false;

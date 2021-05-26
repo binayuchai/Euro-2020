@@ -11,17 +11,21 @@
                 <div class="section-title">
                     <h2>Login To Place bets</h2>
                     <p>Bettix is the most advanced sports trading & affialiate platform and highest stakes across multiple bookmakers and exchanges.</p>
+
                 </div>
+                
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-5 col-md-6">
                 <div class="login-form">
-                    <form asp-controller="Login">
-                        <input name="username" type="email" placeholder="Enter Your Email">
-                        <input name="password" type="password" placeholder="Enter Your Password">
+                    <form asp-controller="Account" asp-action="Login">
+                        <input name="username" type="text" placeholder="Enter Your Phone" required>
+                        <input name="password" type="password" placeholder="Enter Your Password" required>
                         <button type="submit">Login</button>
+                        
                     </form>
+                    <p class="text-danger">@ViewBag.Error</p>
                 </div>
             </div>
         </div>
