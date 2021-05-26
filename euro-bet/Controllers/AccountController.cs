@@ -49,11 +49,16 @@ namespace euro_bet.Controllers
                 if(isValid)
                 {
                     var user = _dbContext.User.FirstOrDefault(x=> x.Account.AccountID == userAccount.AccountID);
+                    var role="User";
+                    if(username=="sthakuri" || username =="buchai")
+                    {
+                        role="Admin";
+                    }
                     var claims = new List<Claim>
                     {
                         new Claim("username", username),
                         new Claim("displayname", string.Format("{0} {1}", user.FirstName, user.LastName )),
-                        new Claim("role", "User")
+                        new Claim("role", role)
                     };
 
                     await HttpContext.SignInAsync(new ClaimsPrincipal(new ClaimsIdentity(claims, "Cookies", "user", "role")));
@@ -166,7 +171,13 @@ namespace euro_bet.Controllers
         [HttpPost]
         public IActionResult Signup3(string username, string password)
         {
+            object o;
+            TempData.TryGetValue("model", out o);
+            SignupViewModel model= (o == null) ? new SignupViewModel() : JsonConvert.DeserializeObject<SignupViewModel>((string)o);
+                
             // Verify username
+            username = model.Phone; //phone is set as username
+
             var chk = _dbContext.Account.Any(x=> x.UserName.ToLower() == username.ToLower());
             if(chk)
             {
@@ -175,9 +186,6 @@ namespace euro_bet.Controllers
             }
             else
             {
-                object o;
-                TempData.TryGetValue("model", out o);
-                SignupViewModel model= (o == null) ? new SignupViewModel() : JsonConvert.DeserializeObject<SignupViewModel>((string)o);
                 
                 //save
                 Account newAccount = new Account();
@@ -214,9 +222,13 @@ namespace euro_bet.Controllers
             return View();
         }
 
-        [Route("Profile")]
         [Authorize]
         public IActionResult Profile()
+        {
+            return View();
+        }
+
+        public IActionResult Users()
         {
             return View();
         }
