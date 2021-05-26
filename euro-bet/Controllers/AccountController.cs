@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
-using System.Security.Cryptography;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Newtonsoft.Json;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 using euro_bet.Models;
 using euro_bet.Data;
 using euro_bet.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace euro_bet.Controllers
 {
@@ -37,28 +38,57 @@ namespace euro_bet.Controllers
 
         [Route("Login")]
         [HttpPost]
-        public IActionResult Login(string username, string password)
+        public async Task<IActionResult> LoginAsync(string username, string password, string returnUrl = null)
         {
             
-            var user = _dbContext.Account.FirstOrDefault(x=> x.UserName.ToLower() == username.ToLower());
-            if(user!=null)
+            var userAccount = _dbContext.Account.FirstOrDefault(x=> x.UserName.ToLower() == username.ToLower());
+            if(userAccount!=null)
             {
-                var hashedPassword = user.Password;
+                var hashedPassword = userAccount.Password;
                 var isValid = _authService.VerifyPassword(hashedPassword, password);
                 if(isValid)
                 {
-                    return RedirectToAction("Index", "Home");
+                    var user = _dbContext.User.FirstOrDefault(x=> x.Account.AccountID == userAccount.AccountID);
+                    var claims = new List<Claim>
+                    {
+                        new Claim("username", username),
+                        new Claim("displayname", string.Format("{0} {1}", user.FirstName, user.LastName )),
+                        new Claim("role", "User")
+                    };
+
+                    await HttpContext.SignInAsync(new ClaimsPrincipal(new ClaimsIdentity(claims, "Cookies", "user", "role")));
+
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return Redirect("/");
+                    }
                 }
                 else
                 {
                     ViewBag.Error="Invalid password.";
                 }
             }
+            else if(!userAccount.IsActive)
+            {
+                ViewBag.Error="Username is not active.";
+            }
             else
             {
                 ViewBag.Error="Username does not exist.";
             }
             return View();
+        }
+
+        [Route("Logout")]
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
         }
 
         public IActionResult Index()
@@ -165,6 +195,7 @@ namespace euro_bet.Controllers
         }
 
         [Route("Profile")]
+        [Authorize]
         public IActionResult Profile()
         {
             return View();
