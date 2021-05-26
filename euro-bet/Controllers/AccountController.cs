@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Newtonsoft.Json;
 using euro_bet.Models;
 using euro_bet.Data;
-using Newtonsoft.Json;
+using euro_bet.Services;
 
 namespace euro_bet.Controllers
 {
@@ -87,22 +90,25 @@ namespace euro_bet.Controllers
         public IActionResult Signup3(SignupViewModel model)
         {
             TempData["model"] = JsonConvert.SerializeObject(model);
+            ViewBag.Phone = model.Phone;
             return View();
         }
 
         [Route("Signup3")]
         [HttpPost]
-        public IActionResult Signup3(string userName, string password)
+        public IActionResult Signup3(string username, string password)
         {
             object o;
             TempData.TryGetValue("model", out o);
             SignupViewModel model= (o == null) ? new SignupViewModel() : JsonConvert.DeserializeObject<SignupViewModel>((string)o);
-            model.UserName = userName;
-            model.Password = password;
+            
             //save
             Account newAccount = new Account();
-            newAccount.UserName = model.UserName;
-            newAccount.Password = model.Password;
+            newAccount.UserName = username;
+
+            AuthService _authService = new AuthService();
+            
+            newAccount.Password = _authService.HashPassword(password);
             newAccount.DateCreated = DateTime.Now;
             newAccount.IsActive = false;
             //_dbContext.Account.Add(newAccount);
