@@ -228,6 +228,7 @@ namespace euro_bet.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Users()
         {
             return View();

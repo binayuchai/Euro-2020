@@ -1,5 +1,6 @@
+@model euro_bet.Models.FixtureViewModel
 @{
-    ViewData["Title"] = "Schedule";
+    ViewData["Title"] = "Fixtures";
 }
 
 <!-- breadcrumb begin -->
@@ -8,16 +9,13 @@
                 <div class="row">
                     <div class="col-xl-7 col-lg-7">
                         <div class="breadcrumb-content">
-                            <h2>Match Schedule</h2>
+                            <h2>Fixtures</h2>
                             <ul>
                                 <li>
                                     <a href="#">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#">Pages</a>
-                                </li>
-                                <li>
-                                    Match Schedule
+                                    Fixtures
                                 </li>
                             </ul>
                         </div>
@@ -31,40 +29,43 @@
         <div class="schedule">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6">
+
+                    @foreach (Fixture fixture in Model.Fixtures)
+                    {
+                        <div class="col-xl-6 col-lg-6">
                         <div class="single-match">
                             <div class="part-head">
-                                <h5 class="match-title">BBPL 2019 Semi Final</h5>
-                                <span class="match-venue">Venue : Sher-e-Bangla National Stadium. Mirpur, Dhaka</span>
+                                <h5 class="match-title">@fixture.Caption</h5>
+                                <span class="match-venue">Venue : @fixture.Venue</span>
                             </div>
                             <div class="part-team">
                                 <div class="single-team">
                                     <div class="logo">
-                                        <img src="assets/img/team-1.png" alt="">
+                                        <img src="/assets/img/flags/@(fixture.SquadHome.Country.CountryName).png" alt="">
                                     </div>
-                                    <span class="team-name">Khulna Tigers</span>
+                                    <span class="team-name">@fixture.SquadHome.Country.CountryName</span>
                                 </div>
                                 <div class="match-details">
                                     <div class="match-time">
-                                        <span class="date">Fri 09 Oct 2019</span>
-                                        <span class="time">09:00 am</span>
+                                        <span class="date"> @fixture.Date.ToString("ddd dd MMM yyyy")</span>
+                                        <span class="time">@fixture.Date.ToString("hh:mm tt")</span>
                                     </div>
                                     <span class="versase">vs</span>
                                     <div class="buttons">
-                                        <a href="#" class="buy-ticket bet-btn bet-btn-dark-light">buy ticket</a>
+                                        <a href="#" class="buy-ticket bet-btn bet-btn-dark-light">Bet</a>
                                     </div>
                                 </div>
                                 <div class="single-team">
                                     <div class="logo">
-                                        <img src="assets/img/team-2.png" alt="">
+                                        <img src="/assets/img/flags/@(fixture.SquadAway.Country.CountryName).png" alt="">
                                     </div>
-                                    <span class="team-name">Dhaka Platoon</span>
+                                    <span class="team-name">@fixture.SquadAway.Country.CountryName</span>
                                 </div>
                             </div>
                             <span class="to-begin-time">
                                 Starting on
                             </span>
-                            <div class="part-timer timer" data-date="30 April 2020 9:56:00 GMT+01:00">
+                            <div class="part-timer timer" data-date="12 Jun 2021 12:00:00 GMT+01:00">
                                 <div class="single-time">
                                     <span class="number day">01</span>
                                     <span class="title">Days</span>
@@ -84,377 +85,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="single-match">
-                            <div class="part-head four">
-                                <h5 class="match-title">English Premier League</h5>
-                                <span class="match-venue">Venue : Camp Randall Stadium. Madison, Wisconsin</span>
-                            </div>
-                            <div class="part-team">
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-3.png" alt="">
-                                    </div>
-                                    <span class="team-name">Manc. United</span>
-                                </div>
-                                <div class="match-details">
-                                    <div class="match-time">
-                                        <span class="date">Fri 09 Oct 2019</span>
-                                        <span class="time">09:00 am</span>
-                                    </div>
-                                    <span class="versase">vs</span>
-                                    <div class="buttons">
-                                        <a href="#" class="buy-ticket bet-btn bet-btn-dark-light">buy ticket</a>
-                                    </div>
-                                </div>
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-4.png" alt="">
-                                    </div>
-                                    <span class="team-name">Manc. City</span>
-                                </div>
-                            </div>
-                            <span class="to-begin-time">
-                                Starting on
-                            </span>
-                            <div class="part-timer timer" data-date="30 April 2020 9:56:00 GMT+01:00">
-                                <div class="single-time">
-                                    <span class="number day">01</span>
-                                    <span class="title">Days</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number hour">24</span>
-                                    <span class="title">Hours</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number minute">48</span>
-                                    <span class="title">Minutes</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number second">11</span>
-                                    <span class="title">Seconds</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="single-match">
-                            <div class="part-head three">
-                                <h5 class="match-title">Spanish P División 2020</h5>
-                                <span class="match-venue">Venue : Notre Dame Stadium. South Bend, Indiana</span>
-                            </div>
-                            <div class="part-team">
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-5.png" alt="">
-                                    </div>
-                                    <span class="team-name">Real Valladolid</span>
-                                </div>
-                                <div class="match-details">
-                                    <div class="match-time">
-                                        <span class="date">Fri 09 Oct 2019</span>
-                                        <span class="time">09:00 am</span>
-                                    </div>
-                                    <span class="versase">vs</span>
-                                    <div class="buttons">
-                                        <a href="#" class="buy-ticket bet-btn bet-btn-dark-light">buy ticket</a>
-                                    </div>
-                                </div>
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-6.png" alt="">
-                                    </div>
-                                    <span class="team-name">Athletic Bilbao</span>
-                                </div>
-                            </div>
-                            <span class="to-begin-time">
-                                Starting on
-                            </span>
-                            <div class="part-timer timer" data-date="30 April 2020 9:56:00 GMT+01:00">
-                                <div class="single-time">
-                                    <span class="number day">01</span>
-                                    <span class="title">Days</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number hour">24</span>
-                                    <span class="title">Hours</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number minute">48</span>
-                                    <span class="title">Minutes</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number second">11</span>
-                                    <span class="title">Seconds</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="single-match">
-                            <div class="part-head two">
-                                <h5 class="match-title">Chinese Super League 2020</h5>
-                                <span class="match-venue">Venue : Arrowhead Stadium. Kansas City, Missouri</span>
-                            </div>
-                            <div class="part-team">
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-7.png" alt="">
-                                    </div>
-                                    <span class="team-name">Beijing Renhe</span>
-                                </div>
-                                <div class="match-details">
-                                    <div class="match-time">
-                                        <span class="date">Fri 09 Oct 2019</span>
-                                        <span class="time">09:00 am</span>
-                                    </div>
-                                    <span class="versase">vs</span>
-                                    <div class="buttons">
-                                        <a href="#" class="buy-ticket bet-btn bet-btn-dark-light">buy ticket</a>
-                                    </div>
-                                </div>
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-8.png" alt="">
-                                    </div>
-                                    <span class="team-name">Shenzhen FC</span>
-                                </div>
-                            </div>
-                            <span class="to-begin-time">
-                                Starting on
-                            </span>
-                            <div class="part-timer timer" data-date="30 April 2020 9:56:00 GMT+01:00">
-                                <div class="single-time">
-                                    <span class="number day">01</span>
-                                    <span class="title">Days</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number hour">24</span>
-                                    <span class="title">Hours</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number minute">48</span>
-                                    <span class="title">Minutes</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number second">11</span>
-                                    <span class="title">Seconds</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="single-match">
-                            <div class="part-head">
-                                <h5 class="match-title">BBPL 2019 Semi Final</h5>
-                                <span class="match-venue">Venue : Sher-e-Bangla National Stadium. Mirpur, Dhaka</span>
-                            </div>
-                            <div class="part-team">
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-1.png" alt="">
-                                    </div>
-                                    <span class="team-name">Khulna Tigers</span>
-                                </div>
-                                <div class="match-details">
-                                    <div class="match-time">
-                                        <span class="date">Fri 09 Oct 2019</span>
-                                        <span class="time">09:00 am</span>
-                                    </div>
-                                    <span class="versase">vs</span>
-                                    <div class="buttons">
-                                        <a href="#" class="buy-ticket bet-btn bet-btn-dark-light">buy ticket</a>
-                                    </div>
-                                </div>
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-2.png" alt="">
-                                    </div>
-                                    <span class="team-name">Dhaka Platoon</span>
-                                </div>
-                            </div>
-                            <span class="to-begin-time">
-                                Starting on
-                            </span>
-                            <div class="part-timer timer" data-date="30 April 2020 9:56:00 GMT+01:00">
-                                <div class="single-time">
-                                    <span class="number day">01</span>
-                                    <span class="title">Days</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number hour">24</span>
-                                    <span class="title">Hours</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number minute">48</span>
-                                    <span class="title">Minutes</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number second">11</span>
-                                    <span class="title">Seconds</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="single-match">
-                            <div class="part-head four">
-                                <h5 class="match-title">English Premier League</h5>
-                                <span class="match-venue">Venue : Camp Randall Stadium. Madison, Wisconsin</span>
-                            </div>
-                            <div class="part-team">
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-3.png" alt="">
-                                    </div>
-                                    <span class="team-name">Manc. United</span>
-                                </div>
-                                <div class="match-details">
-                                    <div class="match-time">
-                                        <span class="date">Fri 09 Oct 2019</span>
-                                        <span class="time">09:00 am</span>
-                                    </div>
-                                    <span class="versase">vs</span>
-                                    <div class="buttons">
-                                        <a href="#" class="buy-ticket bet-btn bet-btn-dark-light">buy ticket</a>
-                                    </div>
-                                </div>
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-4.png" alt="">
-                                    </div>
-                                    <span class="team-name">Manc. City</span>
-                                </div>
-                            </div>
-                            <span class="to-begin-time">
-                                Starting on
-                            </span>
-                            <div class="part-timer timer" data-date="30 April 2020 9:56:00 GMT+01:00">
-                                <div class="single-time">
-                                    <span class="number day">01</span>
-                                    <span class="title">Days</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number hour">24</span>
-                                    <span class="title">Hours</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number minute">48</span>
-                                    <span class="title">Minutes</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number second">11</span>
-                                    <span class="title">Seconds</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="single-match">
-                            <div class="part-head three">
-                                <h5 class="match-title">Spanish P División 2020</h5>
-                                <span class="match-venue">Venue : Notre Dame Stadium. South Bend, Indiana</span>
-                            </div>
-                            <div class="part-team">
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-5.png" alt="">
-                                    </div>
-                                    <span class="team-name">Real Valladolid</span>
-                                </div>
-                                <div class="match-details">
-                                    <div class="match-time">
-                                        <span class="date">Fri 09 Oct 2019</span>
-                                        <span class="time">09:00 am</span>
-                                    </div>
-                                    <span class="versase">vs</span>
-                                    <div class="buttons">
-                                        <a href="#" class="buy-ticket bet-btn bet-btn-dark-light">buy ticket</a>
-                                    </div>
-                                </div>
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-6.png" alt="">
-                                    </div>
-                                    <span class="team-name">Athletic Bilbao</span>
-                                </div>
-                            </div>
-                            <span class="to-begin-time">
-                                Starting on
-                            </span>
-                            <div class="part-timer timer" data-date="30 April 2020 9:56:00 GMT+01:00">
-                                <div class="single-time">
-                                    <span class="number day">01</span>
-                                    <span class="title">Days</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number hour">24</span>
-                                    <span class="title">Hours</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number minute">48</span>
-                                    <span class="title">Minutes</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number second">11</span>
-                                    <span class="title">Seconds</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="single-match">
-                            <div class="part-head two">
-                                <h5 class="match-title">Chinese Super League 2020</h5>
-                                <span class="match-venue">Venue : Arrowhead Stadium. Kansas City, Missouri</span>
-                            </div>
-                            <div class="part-team">
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-7.png" alt="">
-                                    </div>
-                                    <span class="team-name">Beijing Renhe</span>
-                                </div>
-                                <div class="match-details">
-                                    <div class="match-time">
-                                        <span class="date">Fri 09 Oct 2019</span>
-                                        <span class="time">09:00 am</span>
-                                    </div>
-                                    <span class="versase">vs</span>
-                                    <div class="buttons">
-                                        <a href="#" class="buy-ticket bet-btn bet-btn-dark-light">buy ticket</a>
-                                    </div>
-                                </div>
-                                <div class="single-team">
-                                    <div class="logo">
-                                        <img src="assets/img/team-8.png" alt="">
-                                    </div>
-                                    <span class="team-name">Shenzhen FC</span>
-                                </div>
-                            </div>
-                            <span class="to-begin-time">
-                                Starting on
-                            </span>
-                            <div class="part-timer timer" data-date="30 April 2020 9:56:00 GMT+01:00">
-                                <div class="single-time">
-                                    <span class="number day">01</span>
-                                    <span class="title">Days</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number hour">24</span>
-                                    <span class="title">Hours</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number minute">48</span>
-                                    <span class="title">Minutes</span>
-                                </div>
-                                <div class="single-time">
-                                    <span class="number second">11</span>
-                                    <span class="title">Seconds</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
+                    
                 </div>
                 <div class="bettix-pagination">
                     <ul>

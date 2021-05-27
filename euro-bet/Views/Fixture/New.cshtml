@@ -1,0 +1,58 @@
+@model euro_bet.Models.FixtureViewModel
+@{
+    ViewData["Title"] = "Add Fixture";
+}
+
+<!-- regsiter begin -->
+        <div class="register">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8 col-md-8">
+                        <div class="section-title">
+                            <h2>Add New Fixture</h2>
+                            @if(!string.IsNullOrEmpty(ViewBag.Message))
+                            {
+                            <p class="alert alert-success">@ViewBag.Message</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-9 col-lg-9">
+                        
+                        <div class="all-form">
+                            <div id="first-step">
+                                <form asp-action="New" asp-controller="Fixture">
+                                    <div>
+                                        <label for="caption">Caption</label>
+                                        <input class="form-control" asp-for="Caption" type="text" value="" id="caption" required>
+                                    </div>
+                                    <div>
+                                        <label class="active" for="lastName">Home Team</label>
+                                        <select class="form-control" asp-for="HomeSquadID" asp-items="Model.HomeSquads"></select> 
+                                        
+                                    </div>
+                                    <div>
+                                        <label class="active" for="emailAdd">Away Team</label>
+                                       <select class="form-control" asp-for="AwaySquadID" asp-items="Model.AwaySquads"></select> 
+                                        
+                                    </div>
+                                    <div>
+                                        <label for="dOb">Date</label>
+                                        <input asp-for="Date" class="form-control" type="datetime-local" value="" id="date" required>
+                                        
+                                    </div>
+                                    <div>
+                                        <label for="caption">Venue</label>
+                                        <input class="form-control" asp-for="Venue" type="text" value="" id="venue" required>
+                                    </div>
+                                    <br/>
+                                    <button class="btn btn-primary" type="submit">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- regsiter end -->
