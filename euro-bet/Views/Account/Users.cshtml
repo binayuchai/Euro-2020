@@ -76,10 +76,10 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Pos</th>
-                                    <th scope="col">Team</th>
-                                    <th scope="col">w</th>
-                                    <th scope="col">l</th>
+                                    <th scope="col">S.N</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">t</th>
                                     <th scope="col">pts</th>
                                     <th scope="col">diff</th>
@@ -87,121 +87,121 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>
-                                        <span class="single-team">
-                                            <span class="logo">
-                                                <img src="assets/img/team-1.png" alt="">
+                                @foreach (User u in Model.Users)
+                                {
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>
+                                            <span class="single-team">
+                                                <span class="logo">
+                                                    <img src="assets/img/team-1.png" alt="">
+                                                </span>
+                                                <span class="text">
+                                                    Khulna Tigers
+                                                </span>
                                             </span>
-                                            <span class="text">
-                                                Khulna Tigers
-                                            </span>
-                                        </span>
-                                    </td>
-                                    <td>103</td>
-                                    <td>52</td>
-                                    <td>1</td>
-                                    <td>425</td>
-                                    <td><span class="diff">+28</span></td>
-                                    <td>
-                                        <button>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>
-                                        <span class="single-team">
-                                            <span class="logo">
-                                                <img src="assets/img/team-2.png" alt="">
-                                            </span>
-                                            <span class="text">
-                                                Dhaka Platoon
-                                            </span>
-                                        </span>
-                                    </td>
-                                    <td>103</td>
-                                    <td>52</td>
-                                    <td>1</td>
-                                    <td>425</td>
-                                    <td><span class="diff">+28</span></td>
-                                    <td>
-                                        <button>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>
-                                        <span class="single-team">
-                                            <span class="logo">
-                                                <img src="assets/img/team-3.png" alt="">
-                                            </span>
-                                            <span class="text">
-                                                Sylhet thunder
-                                            </span>
-                                        </span>
-                                    </td>
-                                    <td>103</td>
-                                    <td>52</td>
-                                    <td>1</td>
-                                    <td>425</td>
-                                    <td><span class="diff">+28</span></td>
-                                    <td>
-                                        <button>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>
-                                        <span class="single-team">
-                                            <span class="logo">
-                                                <img src="assets/img/team-4.png" alt="">
-                                            </span>
-                                            <span class="text">
-                                                Rajshahi Royals
-                                            </span>
-                                        </span>
-                                    </td>
-                                    <td>103</td>
-                                    <td>52</td>
-                                    <td>1</td>
-                                    <td>425</td>
-                                    <td><span class="diff">+28</span></td>
-                                    <td>
-                                        <button>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>
-                                        <span class="single-team">
-                                            <span class="logo">
-                                                <img src="assets/img/team-5.png" alt="">
-                                            </span>
-                                            <span class="text">
-                                                Rangpur SIxers
-                                            </span>
-                                        </span>
-                                    </td>
-                                    <td>103</td>
-                                    <td>52</td>
-                                    <td>1</td>
-                                    <td>425</td>
-                                    <td><span class="diff">+28</span></td>
-                                    <td>
-                                        <button>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td>@u.103</td>
+                                        <td>@u.52</td>
+                                        <td>1</td>
+                                        <td>425</td>
+                                        <td><span class="diff">+28</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary" href="/Home/">Edit</button>
+                                        </td>
+                                    </tr>
+                                }
+                                <!--
+    <tr>
+        <th scope="row">2</th>
+        <td>
+            <span class="single-team">
+                <span class="logo">
+                    <img src="assets/img/team-2.png" alt="">
+                </span>
+                <span class="text">
+                    Dhaka Platoon
+                </span>
+            </span>
+        </td>
+        <td>103</td>
+        <td>52</td>
+        <td>1</td>
+        <td>425</td>
+        <td><span class="diff">+28</span></td>
+        <td>
+            <button type="button" class="btn btn-primary">Primary</button>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>
+            <span class="single-team">
+                <span class="logo">
+                    <img src="assets/img/team-3.png" alt="">
+                </span>
+                <span class="text">
+                    Sylhet thunder
+                </span>
+            </span>
+        </td>
+        <td>103</td>
+        <td>52</td>
+        <td>1</td>
+        <td>425</td>
+        <td><span class="diff">+28</span></td>
+        <td>
+            <button>
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">4</th>
+        <td>
+            <span class="single-team">
+                <span class="logo">
+                    <img src="assets/img/team-4.png" alt="">
+                </span>
+                <span class="text">
+                    Rajshahi Royals
+                </span>
+            </span>
+        </td>
+        <td>103</td>
+        <td>52</td>
+        <td>1</td>
+        <td>425</td>
+        <td><span class="diff">+28</span></td>
+        <td>
+            <button>
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">5</th>
+        <td>
+            <span class="single-team">
+                <span class="logo">
+                    <img src="assets/img/team-5.png" alt="">
+                </span>
+                <span class="text">
+                    Rangpur SIxers
+                </span>
+            </span>
+        </td>
+        <td>103</td>
+        <td>52</td>
+        <td>1</td>
+        <td>425</td>
+        <td><span class="diff">+28</span></td>
+        <td>
+            <button>
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </td>
+    </tr> -->
                             </tbody>
                         </table>
                     </div>
